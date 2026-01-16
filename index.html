@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nico SPA 美學 | 2026 極致療癒</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --spa-green: #2d4c3e;
+            --spa-accent: #c4a484; 
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, rgba(26, 46, 37, 0.9) 0%, rgba(10, 15, 12, 0.85) 100%), 
+                        url('images.unsplash.com');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 35px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-font { font-family: 'Noto Serif TC', serif; }
+
+        input, select {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            transition: all 0.3s ease;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.7;
+        }
+
+        input:focus, select:focus {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border-color: var(--spa-accent) !important;
+            outline: none;
+            box-shadow: 0 0 20px rgba(196, 164, 132, 0.2);
+        }
+
+        option { background-color: #1a2e25; color: white; }
+
+        .submit-btn {
+            background: linear-gradient(90deg, #c4a484, #a3b18a);
+            color: #1a2e25;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .line-link {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .line-link:hover {
+            background: rgba(0, 185, 0, 0.15);
+            border-color: #00b900;
+            color: #00b900;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-md w-full glass-card overflow-hidden">
+        <div class="pt-10 pb-6 text-center">
+            <h1 class="header-font text-4xl mb-3 tracking-[0.25em] text-white">Nico SPA 美學</h1>
+            <div class="flex justify-center items-center gap-3">
+                <span class="h-[1px] w-6 bg-[#c4a484]"></span>
+                <p class="text-[10px] text-[#c4a484] tracking-[0.5em] uppercase font-light">Elegance & Wellness</p>
+                <span class="h-[1px] w-6 bg-[#c4a484]"></span>
+            </div>
+        </div>
+
+        <form id="bookingForm" class="px-8 pb-8 space-y-3.5">
+            <!-- 姓名 -->
+            <div class="space-y-1">
+                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Guest Name / 顧客姓名</label>
+                <input type="text" id="name" placeholder="您的尊姓大名" required 
+                    class="w-full px-5 py-2.5 rounded-2xl outline-none text-sm">
+            </div>
+
+            <!-- 電話與 LINE 名稱 (並排顯示節省空間) -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Phone / 聯絡電話</label>
+                    <input type="tel" id="phone" placeholder="聯絡電話" required 
+                        class="w-full px-5 py-2.5 rounded-2xl outline-none text-sm">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">LINE Name / ID</label>
+                    <input type="text" id="line_id" placeholder="LINE 稱呼" required 
+                        class="w-full px-5 py-2.5 rounded-2xl outline-none text-sm">
+                </div>
+            </div>
+            
+            <!-- 療程 -->
+            <div class="space-y-1">
+                <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Service / 療程項目</label>
+                <select id="service" class="w-full px-5 py-2.5 rounded-2xl outline-none text-sm cursor-pointer">
+                    <option value="" disabled selected>請選擇服務項目</option>
+                    <option>🌿 熱蠟美肌 (服務時間不等)</option>
+                    <option>🌸 精油舒壓 (60min)</option>
+                    <option>🍀 精油舒壓 (120min)</option>
+                    <option>🌹 精油舒壓 (180min)</option>
+                    <option>💧 紋繡(眉、眼、唇) (150~180min)</option>
+                    <option>👄 水嫩嘟嘟唇 (170min)</option>
+                    <option>🕯️ 眼線 (120min)</option>
+                    <option>💃 整體造型 (洽談)</option>
+                </select>
+            </div>
+
+            <!-- 日期與時間 -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Date / 日期</label>
+                    <input type="date" id="date" required 
+                        class="w-full px-4 py-2.5 rounded-2xl outline-none text-sm">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] uppercase tracking-widest text-gray-400 ml-1">Time / 時段</label>
+                    <select id="time" class="w-full px-4 py-2.5 rounded-2xl outline-none text-sm cursor-pointer">
+                        <option>10:00</option>
+                        <option>13:30</option>
+                        <option>15:00</option>
+                        <option>19:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 預約按鈕 -->
+            <div class="pt-3">
+                <button type="submit" id="submitBtn" 
+                    class="submit-btn w-full text-sm font-bold py-3.5 rounded-2xl tracking-[0.4em] uppercase">
+                    立即預約 Nico SPA
+                </button>
+            </div>
+
+            <!-- Line 客服導引 -->
+            <div class="pt-1">
+                <a href="https://lin.ee/qTaqcLe" target="_blank" 
+                   class="line-link w-full flex items-center justify-center gap-2 py-2.5 rounded-2xl text-xs text-white tracking-widest">
+                    <img src="https://img.icons8.com/?size=100&id=21746&format=png&color=000000" class="w-4 h-4" alt="Line">
+                    LINE 線上客服諮詢
+                </a>
+            </div>
+            
+            <p class="text-center text-[9px] text-gray-500 font-light tracking-widest pt-1 uppercase">
+                2026 © NICO SPA AESTHETICS. ALL RIGHTS RESERVED.
+            </p>
+        </form>
+    </div>
+
+    <script>
+        // 請務必替換為您的 Google Script 網址
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyE5OVvtF1kPQbKpzL7ANMVZXBEQmLdXIEaEH0nAps9ixGEQX3wKRFKwMFoyxxvm-BK/exec';
+        
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        dateInput.value = today;
+
+        document.getElementById('bookingForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            btn.innerText = '正在傳送預約...';
+            btn.disabled = true;
+
+            const formData = new URLSearchParams();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('phone', document.getElementById('phone').value);
+            formData.append('line_id', document.getElementById('line_id').value); // 新增 LINE 名稱
+            formData.append('service', document.getElementById('service').value);
+            formData.append('date', document.getElementById('date').value);
+            formData.append('time', document.getElementById('time').value);
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData.toString()
+            })
+            .then(() => {
+                alert('✨ 感謝預約 Nico SPA！\n資料已送出，我們將盡快與您聯絡。');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                document.getElementById('bookingForm').reset();
+                dateInput.value = today;
+            })
+            .catch(error => {
+                alert('系統忙碌中，請直接透過 LINE 與我們聯繫。');
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
+        };
+    </script>
+</body>
+</html>
